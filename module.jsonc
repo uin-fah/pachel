@@ -1,0 +1,335 @@
+{
+    "hyprland/window": {
+        "format": "<small>{}</small>",
+        "rewrite": {
+            "(.*) - Chromium": " $1",
+            "(.*) - VSCodium": "󰨞 $1",
+            "(.*) - Thunar": " $1",
+            "(.*) - Discord": " $1",
+            "Unity - (.*)": " $1",
+            "Steam": " Steam",
+            "WhatsDesk": " WhatsDesk",
+            "Kitty": " $1",
+            "class<org.telegram.desktop>": " $1",
+            "class<spotify>": " Spotify",
+            "class<unityhub>": " UnityHub",
+            "class<zenity>": "  Lenovo Vantage"
+        },
+        "icon": true,
+        "separate-output": true
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "active-only": false,
+        "all-outputs": true,
+        "on-click": "hyprctl dispatch \"hl.dsp.focus({ workspace = '{name}' })\"",
+        "format": "<small>{name}</small>{icon}{windows}",
+        "format-icons": {
+            "urgent": "  ",
+            "default": " ",
+            "empty": ""
+        },
+	"tooltips": {
+		"default": "{name}: {windows}",
+		"empty": "" // Will result in no tooltip
+	},
+        "window-rewrite": { 
+                "title<.*youtube.*>": " ", 
+                "(.*) - Chromium": " ",
+                "(.*) - mpv": "\uf03d ",
+                "(.*) - Google Chrome": " ",
+                "(.*) - Visual Studio Code": "󰨞 ",
+                "(.*)MongoDB Compass": "\ue7a4 ",
+                "(.*)Beekeeper": "\uf472 ",
+                "(.*)Flatseal": "\uf29a ",
+                "(.*)VSCodium": "󰨞 ",
+                "class<Codium>": "󰨞 ",
+                "(.*)Obsidian": "\uf249 ",
+                "(.*)KeePassXC": "\udb82\udfc4 ",
+                "(.*)Termius": "\uebc7 ",
+                "(.*)Grsync": "\udb81\udce6 ",
+                "(.*)euphonica": "\udb80\udf86 ",
+                "(.*)Virtual Machine Manager": "\uf233 ",
+                "(.*)Podman Desktop": "\uf4b7 ",
+                "(.*)TuneD Manager": "\udb85\udd43 ",
+                "(.*)Winbox": "\udb84\udc87 ",
+                "class<org\\.gnome\\.Nautilus>": " ",
+                "(.*) - Thunar": " ",
+                "class<discord>": " ",
+                "class<blueman-manager>": "\udb80\udcaf ",
+                "(.*) - Lite XL": "\udb80\udd68 ",
+                "(.*)Firefox": "\uf269 ",
+                "Steam": " ",
+                "class<org.telegram.desktop>": " ",
+                "WhatsDesk": " ",
+                "Kitty": " ",
+                "class<spotify>": " ",
+                "class<notion>": "\ue848 ", 
+                "class<unityhub>": " ",
+                "class<Unity>": " ",
+                "class<zenity": " ",
+                "class<MuPDF>": " ",
+                "title<Aggiornamenti>": " ",
+                "title<Pacchetti Installati>": " "
+        }
+    },
+
+    "tray": {
+        "icon-size": 13,
+        "spacing": 10
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "<small>{:%I:%M:%S %p}</small>",
+        "locale": "en_US.UTF-8",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "<small>{:L%A, %d %B %Y | %I:%M:%S %p}</small>",
+        "calendar": {
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    }
+    },
+
+    "backlight": {
+        "format": "{icon}  <small>{percent}%</small>",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip-format": "Luminosità",
+        "tooltip": true
+    },
+
+    "battery": {
+        "states": {
+            "good": 75,
+            "warning": 35,
+            "critical": 20
+        },
+        "format": "{icon} <small>{capacity}%</small>",
+        "format-charging": " <small>{capacity}%</small>",
+        "format-plugged": " <small>{capacity}%</small>",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  <small>{volume}%</small>",
+        "tooltip": true,
+        "format-muted": "",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click-right": "/usr/bin/pavucontrol"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " <small>{volume}%</small>",
+        "format-source-muted": " ",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+
+    "cpu": {
+        "format": "  <small>{usage}%</small>",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": "\uefc5  <small>{}%</small>"
+    },
+    
+    "temperature": {
+        //"thermal-zone": 7,
+        "interval": 5,
+        "format": "{icon}<small>{temperatureC}°C</small>",
+        "format-icons": [" "],
+        "format-alt-click": "click-right",
+        "critical-threshold": 80,
+        "format-critical": " <small>{temperatureC}°C</small>",
+        "on-click": "kitty btop",
+        "tooltip-format": "CPU Temperature",
+        "tooltip": true
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        // internet speed: "
+        "format-wifi": "\uf1eb  <small>online</small>",
+        "format-ethernet": "\uef44  <small>online</small>",
+        "tooltip-format": "\udb80\udf17 <small>{ifname}: via {gwaddr} \nsignal:  {signalStrength}% \nspeed: \uea9a  {bandwidthDownBytes} | \ueaa1  {bandwidthUpBytes}</small>",
+        "format-linked": "\udb80\udf17 {ifname} (No IP) ",
+        "format-disconnected": "\udb80\udf19 down",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 1,
+        "on-click-right": "kitty impala",
+        "max-length": 30
+    },
+
+    "bluetooth": {
+	    "format": "  ",
+	    "format-disabled": "  ",
+	    "format-connected": " {num_connections}",
+	    "tooltip-format": "{device_alias}",
+	    "tooltip-format-connected": " {device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "rfkill toggle bluetooth",
+        "on-click-right": "blueman-manager"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power Profile Daemon: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+          "default": "",
+          "performance": "\udb82\udc20",
+          "balanced": "\uf4a9",
+          "power-saver": ""
+        },
+        "on-click-right": "/usr/bin/tuned-gui"
+    },
+
+    "custom/sessions": {
+        "format" : "\uf007",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/corenav/session.xml",
+		"menu-actions": {
+            		"locked": "hyprlock",
+            		"logout": "hyprctl dispatch 'hl.dsp.exit()'",
+			"shutdown": "poweroff",
+			"reboot": "reboot",
+			"suspend": "hyprlock & systemctl suspend",
+			"hibernate": "hyprlock & systemctl hibernate"
+		}
+    },
+    
+    "custom/firefox": {
+        "format": "\uf269 <small></small>",
+        "format-icons": ["\uf269"],
+        "tooltip-format": "Firefox Developer Edition",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "/usr/lib/firefox-developer-edition/firefox"
+    },
+
+    "custom/nautilus": {
+        "format": "\udb80\ude4b <small></small>",
+        "format-icons": ["\udb80\ude4b"],
+        "tooltip-format": "File Browser",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "nautilus --new-window"
+    },
+
+    "custom/obsidian": {
+        "format": "\uf249 <small></small>",
+        "format-icons": ["\uf249"],
+        "tooltip-format": "Office",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "flatpak run md.obsidian.Obsidian"
+    },
+
+    "custom/kitty": {
+        "format": "\ue795 <small></small>",
+        "format-icons": ["\ue795"],
+        "tooltip-format": "Terminal Emulator",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "kitty"
+    },
+
+    "custom/musics": {
+        "format": "\udb80\udf86 <small></small>",
+        "format-icons": ["\uf40e"],
+        "tooltip-format": "Music Player",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "flatpak run io.github.htkhiem.Euphonica"
+    },
+    
+    "custom/updates": {
+        //"format": " {}",
+        "format": " {}",
+        // "tooltip-format": "Aggiorna il Sistema\n<small>Pacchetti: {}</small>",
+        "escape": true,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "restart-interval": 3600,
+        "on-click": "kitty --title Aggiornamenti sh -c ~/.config/waybar/scripts/installaupdates.sh",
+        "on-click-right": "kitty --title 'Pacchetti Installati' sh -c ~/.config/waybar/scripts/listpackages.sh",
+        "tooltip": true
+    },
+
+    "custom/wol": {
+        "format": "{icon}",
+        "format-icons": [""],
+        "tooltip-format": "Sveglia e Connetti ad Host:\n<small>{}</small>",
+        "escape": true,
+        "return-type":"json",
+        "exec":"~/.config/waybar/scripts/tailscaleinfo.sh",
+        "interval": 60,
+        "on-click": "~/.config/waybar/scripts/wol.sh",
+        "on-click-right": "kitty --title 'Connetti a '$(cat ~/.config/.secrets/hostname.txt)'' sh -c ~/.config/waybar/scripts/connectssh.sh",
+        "tooltip": true
+    },
+
+    "custom/github": {
+        "format": " {}",
+        "tooltip-format": "Notifiche GitHub",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/scripts/github.sh",
+        "on-click": "xdg-open https://github.com/notifications",
+        "tooltip": true
+    },
+
+    "custom/appmenu": {
+        "format": "\uf04b <small></small>",
+        "format-icons": ["\uf40e"],
+        "tooltip-format": "Applications",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "/bin/bash $HOME/.config/bash/womenu/systnav"
+    },
+
+    "custom/media": {
+        "format": "<small>{}</small>",
+        "escape": true,
+        "return-type": "json",
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec": "~/.config/waybar/scripter/media.py", // Script in resources/custom_modules folder
+        "tooltip": true,
+        "tooltip-format": "{}"
+    }
+}
